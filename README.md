@@ -81,3 +81,21 @@ To use the API for code review, send a POST request to the /review endpoint with
      "response": "Comments:... \n\nRating: ...\n\nSummary:..."
    }
    ```
+
+# Part 2
+
+To scale the Auto-Review Tool for 100+ requests per minute and large repositories, the following strategies are recommended:
+
+## High Traffic Handling:
+- Use message queues (e.g., RabbitMQ) for asynchronous processing.
+- Utilize caching (Redis) for frequent data access.
+
+## Large Repository Handling:
+- Implement parallel processing for file analysis.
+- Cache files locally if needed to reduce repeated GitHub API requests.
+
+## Infrastructure:
+- Use scalable databases like MongoDB.
+- Implement microservice architecture to separate DB, Redis, GitHub and OpenAI responses. 
+
+I think, these approaches ensure scalability, reliability, and efficient handling of high traffic and large datasets.
